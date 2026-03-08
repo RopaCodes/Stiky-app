@@ -116,3 +116,39 @@ body {
 #peach{ background-color: var(--peach);}
 #orange{ background-color: var(--orange);}
 
+/* note styling */
+.sticky_area{
+    margin-top: 30px;
+    
+}
+.sticky_titlebar{
+    margin-bottom: 12px;
+}
+#note_title::placeholder,#note_title{
+    color: var(--main-text);
+    font-size: 28px;
+}
+#note_title{
+    border: none;
+    background-color: transparent;
+    /* font-size: 20px; */
+}
+#note_title:focus{
+    outline: none;
+    background-color: transparent;
+    border: none
+}
+.note{
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    resize: none;
+    font-size: 30px;
+    height: 200px;
+    padding: 10px 15px;
+    margin: 10px 15px;
+}
+.note:focus {
+    outline: none;
+    border: none
+}

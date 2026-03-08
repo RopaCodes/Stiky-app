@@ -1,17 +1,18 @@
 const toggle_btn = document.getElementById('toggle_btn')
 const toggle_bar = document.getElementById('toggle_bar')
 const notesContainer = document.getElementById("app")
-
-getNotes().forEach(note => {
-    const noteElement = createNoteElement(note.id, note.content)
-    notesContainer.appendChild(noteElement)
-    //                the note text area and + btn above
-})
+//const stickyContainer = document.getElementById("sticky_titlebar")
 
 // Add a click event listener to the icon
 toggle_btn.addEventListener('click', () => {
     // Toggle the 'show' class on the div
     toggle_bar.classList.toggle('hidden');
+})
+
+getNotes().forEach(note => {
+    const noteElement = createNoteElements(note.id, note.content)
+    notesContainer.appendChild(noteElement)
+    
 })
 
 toggle_btn.addEventListener("click", () => addNote())
@@ -25,10 +26,14 @@ function saveNotes(notes){
     // takes in JS notes and stringifys it as a json b4 saving to local storage key
     localStorage.setItem("stickynotes-notes", JSON.stringify(notes))
 }
-function createNoteElement(id, content){
+function createNoteElements(id, content){
     //allows us to create a new text area and title element
     //const element_title = document.createElement()
-    const element = document.createElement("textarea");
+
+    // create container for the sticky note
+    const stickyContainer = document.createElement("div")
+
+    const element = document.createElement("textarea")
     element.classList.add("note")
     element.value = content;
     element.placeholder = "Type your notes here"
@@ -42,7 +47,15 @@ function createNoteElement(id, content){
             deleteNote(id, element)
         }
     })
-    return element
+
+    const noteTitle = document.createElement("input")
+    noteTitle.classList.add("note_title_head")
+    noteTitle.placeholder = "Title:"
+
+    stickyContainer.appendChild(noteTitle)
+    stickyContainer.appendChild(element)
+
+    return stickyContainer
 }
 function addNote(){
     // add note to html and local storage
@@ -51,10 +64,17 @@ function addNote(){
         id: Math.floor(Math.random()*100000),
         content: ""
     }
-    const noteElement = createNoteElement(noteObj.id, noteObj.content)
+    const noteElement = createNoteElements(noteObj.id, noteObj.content)
     notesContainer.appendChild(noteElement)
     notes.push(noteObj)
     saveNotes(notes)
+    
+    // stickyContainer.appendChild(noteTitle)
+    // const noteElement = createNoteElement(noteObj.id, noteObj.content)
+    // stickyContainer.appendChild(noteElement)
+
+
+
 
 }
 function updateNote(id, newContent){

@@ -119,21 +119,22 @@ body {
 /* note styling */
 .sticky_area{
     margin-top: 30px;
-    
+    display: flex;
+    flex-direction: column;
 }
 .sticky_titlebar{
     margin-bottom: 12px;
 }
-#note_title::placeholder,#note_title{
+.note_title_head::placeholder,.note_title_head{
     color: var(--main-text);
     font-size: 28px;
 }
-#note_title{
+.note_title_head{
     border: none;
     background-color: transparent;
     /* font-size: 20px; */
 }
-#note_title:focus{
+.note_title_head:focus{
     outline: none;
     background-color: transparent;
     border: none

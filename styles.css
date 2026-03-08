@@ -1,0 +1,118 @@
+/* general styling */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Micro 5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+}
+html,body{
+    /* overflow: hidden; */
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* storing colours */
+:root {
+    --background-main: #f79ab5;
+    --main-text: #fff;
+    --deep-pink: #b24062;
+    --blue: #0299e0;
+    --peach: #f1c677;
+    --orange: #fa564d;
+    --navy-blu: #0d0a3f;
+}
+body {
+    background-color: var(--background-main);
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container h1{
+    font-size: 200px;
+    color: var(--main-text);
+}
+.container img{
+    width: 380px;
+    margin-top: 20px;
+}
+.container ul li{
+    list-style: none;
+    margin: 90px 0 ;
+    
+}
+.open_btn, .open_btn a{
+    transition: all .3s ease-in-out;
+}
+.open_btn:hover{
+    transform: translateY(-5px);
+}
+.container ul li a{
+    text-decoration: none;
+    color: var(--background-main);
+    font-size: 40px;
+    padding: 14px 80px;
+    background-color: var(--main-text);
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px #454545;
+}
+
+/* main pg styling */
+.main_container{
+    margin: 0 80px;
+}
+.main_container h1{
+    font-size: 200px;
+    color: var(--main-text);
+}
+.add_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+/* .add_btn{
+    align-items: center;
+} */
+.add_btn i{
+    color: var(--main-text);
+    border-radius: 50px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#toggle_bar{
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: var(--main-text);
+    opacity: 1 ;
+    transform: translateX(0);
+    transition: opacity .5s ease, transform .5s ease;
+}
+.hidden {
+    /* display: none !important; */
+    opacity: 0 !important;
+    transform: translateX(-400px) !important;
+
+}
+#toggle_bar .square{
+    width: 34px;
+    height: 34px;
+    margin: 6px;
+    border-radius: 4px;
+}
+#dark_pink{ background-color: var(--deep-pink);}
+#blue{ background-color: var(--blue);}
+#navy{ background-color: var(--navy-blu);}
+#peach{ background-color: var(--peach);}
+#orange{ background-color: var(--orange);}
+

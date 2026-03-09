@@ -20,28 +20,41 @@
     ></script>
 
     <!-- favicon / logo of website -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
 
     <title>Sticky</title>
   </head>
   <body>
     <div class="main_container">
       <h1>Notes</h1>
-
-      <div id="notes_container" class="notes-grid">
-        <!-- wherenotes will be added -->
-      </div>
       <div class="add_container">
         <div class="add_btn">
           <i class="fa-solid fa-plus" id="toggle_btn"></i>
         </div>
-        <div id="toggle_bar" class="hidden">
+        <!-- <div id="toggle_bar" class="hidden">
           <div class="square" id="dark_pink"></div>
           <div class="square" id="blue"></div>
           <div class="square" id="peach"></div>
           <div class="square" id="orange"></div>
           <div class="square" id="navy"></div>
-        </div>
+        </div> -->
       </div>
+      <div id="notes_container">
+        <!-- <div class="sticky_area">
+            input
+          <button class="delete">x</button>
+          <i class="fa-solid fa-bars"></i> 
+          <textarea class="note" placeholder="Type your text here"></textarea>
+
+        </div> -->
+      </div>
+      <ul>
+        <li class="back_btn">
+          <a href="index.html">
+            <i class="fa-solid fa-circle-chevron-left"></i>
+          </a>
+        </li>
+      </ul>
     </div>
     <!-- javascript file -->
     <script src="main.js"></script>

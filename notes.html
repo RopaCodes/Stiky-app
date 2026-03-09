@@ -1,66 +1,293 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="styles.css" />
+/* general styling */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Micro 5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+}
+html,body{
+    /* overflow: hidden; */
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Micro+5&family=Rowdies:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- font awesome -->
-    <script
-      src="https://kit.fontawesome.com/fb9f288e05.js"
-      crossorigin="anonymous"
-    ></script>
+/* storing colours */
+:root {
+    --background-main: #f79ab5;
+    --main-text: #fff;
+    --deep-pink: #b24062;
+    --blue: #0299e0;
+    --peach: #f1c677;
+    --orange: #fa564d;
+    --navy-blu: #0d0a3f;
+}
+body {
+    background-color: var(--background-main);
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container h1{
+    font-size: 200px;
+    color: var(--main-text);
+    margin-bottom: 10px;
+}
+.container img{
+    width: 380px;
+    margin-top: 20px;
+    animation: hoveringAnimation 3s ease-in-out infinite;
+}
+.container ul li{
+    list-style: none;
+    margin: 90px 0 ;
+    
+}
+.open_btn, .open_btn a{
+    transition: all .3s ease-in-out;
+}
+.open_btn:hover{
+    transform: translateY(-5px);
+}
 
-    <!-- favicon / logo of website -->
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
+.container ul li a{
+    text-decoration: none;
+    color: var(--background-main);
+    font-size: 40px;
+    padding: 14px 80px;
+    background-color: var(--main-text);
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px #454545;
+}
 
-    <!-- JSON -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#b24062" />
+/* main pg styling */
+.main_container{
+    margin: 0 80px;
+}
+.main_container h1{
+    font-size: 200px;
+    color: var(--main-text);
+}
+.add_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.back_btn {
+    list-style: none;
+    text-decoration: none;
+}
+.back_btn a{
+    text-decoration: none;
+}
+.back_btn a i{
+    font-size: 40px;
+    color: var(--main-text);
+    margin: 20px 0;
+}
+.add_btn i{
+    color: var(--main-text);
+    border-radius: 50px;
+    font-size: 30px;
+    cursor: pointer;
+}
 
-    <title>Sticky</title>
-  </head>
-  <body>
-    <div class="main_container">
-      <h1>Notes</h1>
-      <div class="add_container">
-        <div class="add_btn">
-          <i class="fa-solid fa-plus" id="toggle_btn"></i>
-        </div>
-        <!-- <div id="toggle_bar" class="hidden">
-          <div class="square" id="dark_pink"></div>
-          <div class="square" id="blue"></div>
-          <div class="square" id="peach"></div>
-          <div class="square" id="orange"></div>
-          <div class="square" id="navy"></div>
-        </div> -->
-      </div>
-      <div id="notes_container">
-        <!-- <div class="sticky_area">
-            input
-          <button class="delete">x</button>
-          <i class="fa-solid fa-bars"></i> 
-          <textarea class="note" placeholder="Type your text here"></textarea>
+#toggle_bar{
+    display: flex;
+    flex-direction: row;
+    margin-left: 25px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: var(--main-text);
+    opacity: 1 ;
+    transform: translateX(0);
+    transition: opacity .5s ease, transform .5s ease;
+}
+.hidden {
+    /* display: none !important; */
+    opacity: 0 !important;
+    transform: translateX(-400px) !important;
 
-        </div> -->
-      </div>
-      <ul>
-        <li class="back_btn">
-          <a href="index.html">
-            <i class="fa-solid fa-circle-chevron-left"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- javascript file -->
-    <script src="main.js"></script>
-  </body>
-</html>
+}
+#toggle_bar .square{
+    width: 34px;
+    height: 34px;
+    margin: 6px;
+    border-radius: 4px;
+}
+#dark_pink{ background-color: var(--deep-pink);}
+#blue{ background-color: var(--blue);}
+#navy{ background-color: var(--navy-blu);}
+#peach{ background-color: var(--peach);}
+#orange{ background-color: var(--orange);}
+
+/* note styling */
+#notes_container{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.sticky_area{
+    display: inline-block;
+    padding: 15px 20px ;
+    margin: 20px 10px;
+    width: 400px;
+}
+.sticky_area textarea {
+    width: 100%;
+}
+.note_title_head:focus{
+    outline: none;
+    background-color: transparent;
+    border: none
+} 
+.note{
+    border: none;
+    border-radius: 4px;
+    resize: none;
+    font-size: 30px;
+    height: 250px;
+    padding: 10px 15px;
+    /* margin: 10px 15px; */
+}
+.note:focus {
+    outline: none;
+    border: none
+}
+
+.sticky_area[data-color="0"] {
+    background-color: var(--deep-pink);
+}
+
+.sticky_area[data-color="1"] {
+    background-color: var(--blue);
+}
+
+.sticky_area[data-color="2"] {
+    background-color: var(--peach);
+}
+
+.sticky_area[data-color="3"] {
+    background-color: var(--orange);
+}
+
+.sticky_area[data-color="4"] {
+    background-color: var(--navy-blu);
+}
+.delete{
+    background: none;
+    position: relative;
+    /* left: ; */
+    margin-left: 30px;
+    color: var(--main-text);
+    font-size: 42px;
+    margin-bottom: 10px;
+    border: none;
+    transition: all .5s ease-in-out;
+}
+.delete:hover{
+    opacity: .8;
+    transform: translateY(-5px)
+}
+.note_title{
+    font-size: 28px;
+    color: var(--main-text);
+    border: none;
+    background-color: transparent;
+    width: 80%;
+}
+.note_title::placeholder{
+    color: var(--main-text);
+    opacity: .8;
+    font-size: 28px;
+
+}
+.note_title:focus{
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+/* animations */
+@keyframes hoveringAnimation{
+    0%{transform: translateY(0px) ;}
+    /* 25%{transform: translateY(25px) ;} */
+    50%{transform: translateY(-25px) ;} 
+    /* 75%{transform: translateY(25px) ;}  */
+    100%{transform: translateY(0px) ;} 
+    
+}
+
+/* media querry */
+@media (max-width: 995px){
+    .sticky_area {
+        width: 390px;
+    }
+    #notes_container{
+        width: 100vw;
+    }
+    .main_container {
+        margin: 0 20px;
+
+    }
+}
+@media (max-width: 969px) {
+    .sticky_area {
+        min-width: 320px;
+    }
+}
+@media (max-width: 818px) {
+    #notes_container{
+        flex-direction: column;
+    }
+    .main_container h1,.add_btn i{
+        margin-left: 10%;
+    }
+    .add_btn i{
+        margin-left: 20%;
+    }
+}
+
+@media (max-width: 660px) {
+    .main_container h1{
+        font-size: 150px;
+    }
+    .container img{
+        width: 200;
+    }
+    .container h1{
+        font-size: 180;
+    }
+    
+}
+@media (max-width: 460px) {
+    .main_container h1 {
+        font-size: 120px;
+        /* margin-left: 10%; */
+    }
+    .sticky_area{
+        width: 280px;
+        /* margin-left: 50px; */
+    }
+
+    /* .main_container {
+        margin: 0 10px;
+        
+    } */
+
+}
+@media (max-width: 380px){
+    #notes_container{
+        transform: translateX(-20px);
+    }
+
+}
